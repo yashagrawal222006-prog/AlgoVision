@@ -8,6 +8,7 @@ import { NavigationController } from './navigation.js';
 import { SortingVisualizer } from './sorting/sortingVisualizer.js';
 import { SearchingVisualizer } from './searching/searchingVisualizer.js';
 import { GraphVisualizer } from './graphs/graphVisualizer.js';
+import { DataStructuresPlayground } from './datastructures/dataStructuresPlayground.js';
 
 class AlgoVisionApp {
   constructor() {
@@ -16,6 +17,7 @@ class AlgoVisionApp {
     this.sortingVisualizer = null;
     this.searchingVisualizer = null;
     this.graphVisualizer = null;
+    this.dataStructures = null;
   }
 
   /**
@@ -37,10 +39,13 @@ class AlgoVisionApp {
     // 5. Initialize Graph Algorithms Workspace
     this.graphVisualizer = new GraphVisualizer();
 
-    // 6. Set up Quick Search and Keyboard Shortcuts
+    // 6. Initialize Data Structures Playground (Stack & Queue)
+    this.dataStructures = new DataStructuresPlayground();
+
+    // 7. Set up Quick Search and Keyboard Shortcuts
     this.setupGlobalSearch();
 
-    // 7. Animate Metric Counters & Progress Bars
+    // 8. Animate Metric Counters & Progress Bars
     this.setupVisualEnhancements();
 
     // Pause visualizers automatically if user navigates away
@@ -54,6 +59,9 @@ class AlgoVisionApp {
       }
       if (view !== 'graphs') {
         this.graphVisualizer?.pause();
+      }
+      if (view !== 'data-structures') {
+        this.dataStructures?.pause();
       }
     });
 

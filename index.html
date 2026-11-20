@@ -425,10 +425,10 @@
               <div class="progress-item">
                 <div class="progress-item-head">
                   <span class="progress-item-name">Data Structures</span>
-                  <span class="progress-item-count">1 / 8</span>
+                  <span class="progress-item-count">2 / 8</span>
                 </div>
                 <div class="mini-bar-track">
-                  <div class="mini-bar-fill emerald" style="width: 12.5%;"></div>
+                  <div class="mini-bar-fill emerald" style="width: 25%;"></div>
                 </div>
               </div>
             </div>
@@ -1700,61 +1700,229 @@
           </div>
         </section>
 
-        <!-- 5. DATA STRUCTURES VIEW (Clean Empty State) -->
+        <!-- 5. DATA STRUCTURES VIEW (Interactive Playground: Stack & Queue) -->
         <section id="data-structures" class="content-view" aria-labelledby="ds-title">
+
           <div class="section-top-header">
             <div class="section-tag-group">
               <span class="section-tag emerald">Module 04</span>
-              <span class="section-version-tag">Coming in Phase 2</span>
+              <span class="section-version-tag">Interactive Playground</span>
             </div>
             <h1 id="ds-title" class="view-title">Data Structures</h1>
-            <p class="view-subtitle">Dynamic pointer animations, memory tree balancing, and node operations</p>
+            <p class="view-subtitle">Run Stack and Queue operations one execution step at a time, with live pointers and C++ source</p>
           </div>
 
-          <div class="empty-state-card">
-            <div class="empty-state-illustration emerald">
-              <div class="empty-icon-circle">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path
-                    d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z">
-                  </path>
-                  <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
-                  <line x1="12" y1="22.08" x2="12" y2="12"></line>
-                </svg>
-              </div>
-              <div class="pulse-ring"></div>
-            </div>
-
-            <div class="empty-state-badge">Foundation Ready</div>
-            <h2 class="empty-state-heading">Data Structure Visualizer Under Construction</h2>
-            <p class="empty-state-text">
-              Watch nodes allocate, link, rotate, and delete in real-time. Test custom inputs for balanced binary search
-              trees, inspect hash table collision chaining, and trace stack and queue pointers.
-            </p>
-
-            <div class="empty-state-feature-box">
-              <div class="feature-box-title">Structures Planned for this Module:</div>
-              <div class="feature-pill-list">
-                <span class="feature-pill">Singly & Doubly Linked List</span>
-                <span class="feature-pill">Stack & Monotonic Queue</span>
-                <span class="feature-pill">Binary Search Tree (BST)</span>
-                <span class="feature-pill">AVL Self-Balancing Tree</span>
-                <span class="feature-pill">Binary Heap (Min/Max)</span>
-                <span class="feature-pill">Hash Table with Chaining</span>
-                <span class="feature-pill">Trie (Prefix Tree)</span>
-                <span class="feature-pill">Disjoint Set Union (DSU)</span>
-              </div>
-            </div>
-
-            <div class="empty-state-actions">
-              <button class="btn btn-secondary nav-trigger" data-navigate="dashboard">
-                <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <line x1="19" y1="12" x2="5" y2="12"></line>
-                  <polyline points="12 19 5 12 12 5"></polyline>
-                </svg>
-                <span>Return to Dashboard</span>
+          <!-- Structure Selector (tabs + mobile dropdown) -->
+          <div class="sorting-selector-bar">
+            <div class="algo-tabs-list" role="tablist" aria-label="Data structure">
+              <button class="ds-tab-btn active" data-ds="stack" role="tab" aria-selected="true">
+                <span class="tab-indicator"></span>
+                <span>Stack</span>
+              </button>
+              <button class="ds-tab-btn" data-ds="queue" role="tab" aria-selected="false">
+                <span class="tab-indicator"></span>
+                <span>Queue</span>
               </button>
             </div>
+            <div class="algo-dropdown-wrapper">
+              <select id="dsStructureSelect" class="form-select" aria-label="Select data structure">
+                <option value="stack" selected>Stack</option>
+                <option value="queue">Queue</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Structure Info + Complexity -->
+          <div class="algo-info-card">
+            <div class="algo-info-main">
+              <div class="algo-info-header">
+                <h2 class="algo-info-title" id="dsInfoTitle">Stack</h2>
+                <span class="algo-info-category" id="dsInfoCategory">LIFO — Last In, First Out</span>
+              </div>
+              <p class="algo-info-desc" id="dsInfoDesc"></p>
+            </div>
+            <div class="algo-complexities-grid">
+              <div class="complexity-box">
+                <span class="complexity-label" id="dsComp0Label">Push</span>
+                <code class="complexity-val best" id="dsComp0Val">O(1)</code>
+              </div>
+              <div class="complexity-box">
+                <span class="complexity-label" id="dsComp1Label">Pop</span>
+                <code class="complexity-val avg" id="dsComp1Val">O(1)</code>
+              </div>
+              <div class="complexity-box">
+                <span class="complexity-label" id="dsComp2Label">Peek</span>
+                <code class="complexity-val worst" id="dsComp2Val">O(1)</code>
+              </div>
+              <div class="complexity-box">
+                <span class="complexity-label" id="dsComp3Label">Space</span>
+                <code class="complexity-val space" id="dsComp3Val">O(N)</code>
+              </div>
+            </div>
+          </div>
+
+          <!-- Visualizer Stage -->
+          <div class="visualizer-stage-card">
+            <div class="stage-card-header">
+              <div class="stage-header-title-group">
+                <div class="pulse-indicator-dot"></div>
+                <span class="stage-title" id="dsStageTitle">Stack Visualizer</span>
+                <span id="dsStepPill" class="stage-step-pill">Idle</span>
+              </div>
+              <div class="stage-header-actions">
+                <span id="dsStatusBadge" class="status-badge-chip ready">Ready</span>
+              </div>
+            </div>
+
+            <!-- Current operation + explanation -->
+            <div class="ds-op-bar">
+              <span class="ds-op-label" id="dsOpLabel">No operation yet</span>
+              <span class="ds-op-step" id="dsOpStep">Choose an operation below</span>
+            </div>
+            <div id="dsExplainBanner" class="step-explanation-banner" role="status" aria-live="polite">
+              <svg class="step-info-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="12" y1="16" x2="12" y2="12"></line>
+                <line x1="12" y1="8" x2="12.01" y2="8"></line>
+              </svg>
+              <span id="dsExplain" class="explanation-text"></span>
+            </div>
+
+            <!-- Canvas -->
+            <div id="dsCanvas" class="ds-canvas" aria-label="Data structure visualization"></div>
+
+            <!-- Current elements -->
+            <div class="ds-elements-row">
+              <span class="ds-elements-label" id="dsElementsLabel">Stack (bottom → top)</span>
+              <div id="dsElements" class="ds-elements-list"></div>
+              <span class="ds-size-pill" id="dsSizePill">Size 0</span>
+            </div>
+
+            <!-- Legend -->
+            <div class="legend-bar">
+              <div class="legend-item"><span class="legend-dot normal"></span><span class="legend-text">Stored element</span></div>
+              <div class="legend-item"><span class="legend-dot compared"></span><span class="legend-text">Being accessed</span></div>
+              <div class="legend-item"><span class="legend-dot sorted"></span><span class="legend-text">Just inserted</span></div>
+              <div class="legend-item"><span class="legend-dot swapped"></span><span class="legend-text">Being removed</span></div>
+            </div>
+          </div>
+
+          <!-- Controls -->
+          <div class="sorting-controls-card">
+
+            <!-- Row 1: operations -->
+            <div class="controls-row ds-ops-row">
+              <div class="ds-input-group">
+                <label class="control-label" for="dsValueInput">Element:</label>
+                <input type="text" id="dsValueInput" class="form-text-input ds-value-input" inputmode="numeric"
+                  maxlength="8" autocomplete="off" placeholder="Value to push, e.g. 42" aria-describedby="dsInputError">
+              </div>
+              <div id="dsOpButtons" class="playback-btn-group"></div>
+            </div>
+
+            <!-- Row 2: capacity -->
+            <div class="controls-row ds-capacity-row">
+              <div class="ds-input-group">
+                <label class="control-label" for="dsCapacityInput">Capacity (optional):</label>
+                <input type="text" id="dsCapacityInput" class="form-text-input ds-capacity-input" inputmode="numeric"
+                  maxlength="2" autocomplete="off" placeholder="Unlimited">
+                <button id="dsApplyCapacityBtn" class="btn btn-secondary btn-sm">Apply</button>
+              </div>
+              <span class="ds-hint">Leave blank for unlimited, or enter 1–20. Applying capacity resets the current structure.</span>
+            </div>
+
+            <div id="dsInputError" class="custom-input-error" role="alert" style="display: none;"></div>
+
+            <!-- Row 3: playback -->
+            <div class="controls-row playback-row">
+              <div class="playback-btn-group">
+                <button id="dsPrevBtn" class="btn btn-secondary" title="Previous step">
+                  <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="15 18 9 12 15 6"></polyline>
+                  </svg>
+                  <span>Prev Step</span>
+                </button>
+                <button id="dsPlayBtn" class="btn btn-primary" title="Play remaining steps automatically">
+                  <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                  </svg>
+                  <span>Play</span>
+                </button>
+                <button id="dsPauseBtn" class="btn btn-secondary" style="display: none;" title="Pause playback">
+                  <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="6" y="4" width="4" height="16"></rect>
+                    <rect x="14" y="4" width="4" height="16"></rect>
+                  </svg>
+                  <span>Pause</span>
+                </button>
+                <button id="dsNextBtn" class="btn btn-secondary" title="Next step">
+                  <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="9 18 15 12 9 6"></polyline>
+                  </svg>
+                  <span>Next Step</span>
+                </button>
+                <button id="dsResetBtn" class="btn btn-ghost" title="Empty the structure and clear history">
+                  <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="1 4 1 10 7 10"></polyline>
+                    <path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"></path>
+                  </svg>
+                  <span>Reset</span>
+                </button>
+              </div>
+
+              <div class="ds-playback-options">
+                <label class="ds-auto-toggle" for="dsAutoPlay">
+                  <input type="checkbox" id="dsAutoPlay" checked>
+                  <span>Auto-play new operations</span>
+                </label>
+                <div class="control-slider-group">
+                  <span class="control-label">Speed:</span>
+                  <input type="range" id="dsSpeedSlider" class="form-range" min="1" max="100" value="55" aria-label="Playback speed">
+                  <span id="dsSpeedLabel" class="slider-badge">1.0x</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Details: variables + history | C++ code -->
+          <div class="sorting-details-grid">
+            <div class="ds-left-col">
+              <div class="sorting-card">
+                <div class="card-head">
+                  <h3 class="card-title">Variables</h3>
+                  <span class="card-sub">Values at the current step</span>
+                </div>
+                <div id="dsVars" class="ds-vars"></div>
+              </div>
+
+              <div class="sorting-card">
+                <div class="card-head">
+                  <h3 class="card-title">Operation History</h3>
+                  <span class="card-sub" id="dsHistoryCount">0 operations</span>
+                </div>
+                <ol id="dsHistory" class="ds-history"></ol>
+              </div>
+            </div>
+
+            <div class="sorting-card cpp-code-card">
+              <div class="card-head">
+                <div class="cpp-head-left">
+                  <h3 class="card-title">C++ Implementation</h3>
+                  <span class="cpp-badge">Source & Execution Track</span>
+                </div>
+              </div>
+              <div class="cpp-code-scroll ds-code-scroll" id="dsCodeScroll">
+                <div id="dsCppCode" class="cpp-code-container"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="ds-coming-next">
+            <span class="ds-coming-label">Coming next:</span>
+            <span class="feature-pill">Linked List</span>
+            <span class="feature-pill">Binary Search Tree</span>
+            <span class="feature-pill">Binary Heap</span>
+            <span class="feature-pill">Hash Table</span>
           </div>
         </section>
 
