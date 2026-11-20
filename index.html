@@ -1,0 +1,1893 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AlgoVision — Interactive DSA Learning Platform</title>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml"
+    href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%238b5cf6' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><polygon points='12 2 2 7 12 12 22 7 12 2'/><polyline points='2 17 12 22 22 17'/><polyline points='2 12 12 17 22 12'/></svg>">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
+    rel="stylesheet">
+
+  <!-- Stylesheet -->
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <!-- App Container -->
+  <div class="app-layout" id="appLayout">
+
+    <!-- Mobile Header Bar -->
+    <header class="mobile-header">
+      <div class="brand-group">
+        <button id="mobileMenuBtn" class="icon-btn" aria-label="Toggle Navigation Menu">
+          <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
+        <div class="logo-container">
+          <div class="logo-mark">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+              <polyline points="2 17 12 22 22 17"></polyline>
+              <polyline points="2 12 12 17 22 12"></polyline>
+            </svg>
+          </div>
+          <span class="logo-text">Algo<span class="gradient-text">Vision</span></span>
+        </div>
+      </div>
+      <div class="mobile-actions">
+        <button id="mobileThemeToggle" class="icon-btn" aria-label="Toggle Theme">
+          <svg class="theme-icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+          <svg class="theme-icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+        </button>
+      </div>
+    </header>
+
+    <!-- Mobile Navigation Backdrop Overlay -->
+    <div class="sidebar-backdrop" id="sidebarBackdrop"></div>
+
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar" id="sidebar">
+      <!-- Sidebar Header -->
+      <div class="sidebar-header">
+        <div class="logo-container">
+          <div class="logo-mark">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+              <polyline points="2 17 12 22 22 17"></polyline>
+              <polyline points="2 12 12 17 22 12"></polyline>
+            </svg>
+          </div>
+          <div class="logo-info">
+            <span class="logo-text">Algo<span class="gradient-text">Vision</span></span>
+            <span class="logo-tag">v1.0 • Foundation</span>
+          </div>
+        </div>
+        <button id="sidebarCollapseBtn" class="icon-btn collapse-btn" aria-label="Toggle Sidebar"
+          title="Collapse Sidebar (Ctrl+B)">
+          <svg class="collapse-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="15 18 9 12 15 6"></polyline>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Navigation Links -->
+      <nav class="sidebar-nav">
+        <div class="nav-section-label">Main Menu</div>
+        <ul class="nav-list">
+          <li class="nav-item">
+            <button class="nav-link active" data-target="dashboard" aria-current="page">
+              <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="3" y="3" width="7" height="7"></rect>
+                <rect x="14" y="3" width="7" height="7"></rect>
+                <rect x="14" y="14" width="7" height="7"></rect>
+                <rect x="3" y="14" width="7" height="7"></rect>
+              </svg>
+              <span class="nav-text">Dashboard</span>
+              <span class="nav-badge">Overview</span>
+            </button>
+          </li>
+          <li class="nav-item">
+            <button class="nav-link" data-target="sorting">
+              <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="18" y1="20" x2="18" y2="10"></line>
+                <line x1="12" y1="20" x2="12" y2="4"></line>
+                <line x1="6" y1="20" x2="6" y2="14"></line>
+              </svg>
+              <span class="nav-text">Sorting</span>
+              <span class="nav-count">8</span>
+            </button>
+          </li>
+          <li class="nav-item">
+            <button class="nav-link" data-target="searching">
+              <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+              </svg>
+              <span class="nav-text">Searching</span>
+              <span class="nav-count">5</span>
+            </button>
+          </li>
+          <li class="nav-item">
+            <button class="nav-link" data-target="graphs">
+              <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="6" cy="6" r="3"></circle>
+                <circle cx="18" cy="6" r="3"></circle>
+                <circle cx="18" cy="18" r="3"></circle>
+                <circle cx="6" cy="18" r="3"></circle>
+                <line x1="8.5" y1="7.5" x2="15.5" y2="16.5"></line>
+                <line x1="6" y1="9" x2="6" y2="15"></line>
+                <line x1="18" y1="9" x2="18" y2="15"></line>
+              </svg>
+              <span class="nav-text">Graph Algorithms</span>
+              <span class="nav-count">7</span>
+            </button>
+          </li>
+          <li class="nav-item">
+            <button class="nav-link" data-target="data-structures">
+              <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path
+                  d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z">
+                </path>
+                <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+                <line x1="12" y1="22.08" x2="12" y2="12"></line>
+              </svg>
+              <span class="nav-text">Data Structures</span>
+              <span class="nav-count">8</span>
+            </button>
+          </li>
+          <li class="nav-item">
+            <button class="nav-link" data-target="complexity">
+              <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+              </svg>
+              <span class="nav-text">Complexity Analysis</span>
+              <span class="nav-badge accent">Big-O</span>
+            </button>
+          </li>
+        </ul>
+
+        <div class="nav-section-label">Preferences</div>
+        <ul class="nav-list">
+          <li class="nav-item">
+            <button class="nav-link" data-target="settings">
+              <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="3"></circle>
+                <path
+                  d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z">
+                </path>
+              </svg>
+              <span class="nav-text">Settings</span>
+            </button>
+          </li>
+        </ul>
+      </nav>
+
+      <!-- Sidebar Footer -->
+      <div class="sidebar-footer">
+        <div class="theme-switch-container">
+          <div class="theme-label">
+            <svg class="footer-icon theme-indicator-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="2">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+            <span class="theme-text">Dark Mode</span>
+          </div>
+          <button id="themeToggleBtn" class="theme-toggle-switch" aria-label="Toggle Dark and Light Mode" role="switch"
+            aria-checked="true">
+            <span class="toggle-slider"></span>
+          </button>
+        </div>
+
+        <div class="user-chip">
+          <div class="avatar-ring">
+            <div class="avatar">AV</div>
+          </div>
+          <div class="user-meta">
+            <span class="user-name">DSA Explorer</span>
+            <span class="user-status"><span class="status-dot"></span> Ready to Learn</span>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-wrapper" id="mainContent">
+
+      <!-- Top Utility Header (Desktop) -->
+      <header class="top-header">
+        <div class="header-breadcrumb">
+          <span class="breadcrumb-root">AlgoVision</span>
+          <span class="breadcrumb-separator">/</span>
+          <span class="breadcrumb-current" id="currentBreadcrumb">Dashboard</span>
+        </div>
+
+        <div class="header-actions">
+          <div class="search-input-wrapper">
+            <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+            <input type="text" id="globalSearchInput" class="search-input"
+              placeholder="Search algorithms (Quick Find)..." autocomplete="off">
+            <kbd class="search-kbd">Ctrl+K</kbd>
+          </div>
+
+          <button id="headerThemeBtn" class="icon-btn header-btn" aria-label="Toggle Theme" title="Toggle theme">
+            <svg class="theme-icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="5"></circle>
+              <line x1="12" y1="1" x2="12" y2="3"></line>
+              <line x1="12" y1="21" x2="12" y2="23"></line>
+              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+              <line x1="1" y1="12" x2="3" y2="12"></line>
+              <line x1="21" y1="12" x2="23" y2="12"></line>
+              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+            </svg>
+            <svg class="theme-icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+          </button>
+        </div>
+      </header>
+
+      <!-- Content Views Container -->
+      <div class="content-container">
+
+        <!-- 1. DASHBOARD VIEW (Active by default) -->
+        <section id="dashboard" class="content-view active" aria-labelledby="dashboard-title">
+
+          <!-- Hero Section -->
+          <div class="hero-card">
+            <div class="hero-content">
+              <div class="hero-badge">
+                <span class="pulsing-badge-dot"></span>
+                Interactive Visualizer Platform
+              </div>
+              <h1 id="dashboard-title" class="hero-heading">Welcome to <span class="gradient-text">AlgoVision</span>
+              </h1>
+              <p class="hero-description">
+                Explore, visualize, and master Data Structures and Algorithms with step-by-step interactive animations,
+                dynamic code execution, and real-time asymptotic complexity tracking.
+              </p>
+              <div class="hero-actions">
+                <button class="btn btn-primary nav-trigger" data-navigate="sorting">
+                  <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                  </svg>
+                  <span>Start Learning Sorting</span>
+                </button>
+                <button class="btn btn-secondary nav-trigger" data-navigate="graphs">
+                  <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="6" cy="6" r="3"></circle>
+                    <circle cx="18" cy="6" r="3"></circle>
+                    <circle cx="18" cy="18" r="3"></circle>
+                    <line x1="8.5" y1="7.5" x2="15.5" y2="16.5"></line>
+                  </svg>
+                  <span>Explore Graph Theory</span>
+                </button>
+                <button class="btn btn-ghost nav-trigger" data-navigate="complexity">
+                  <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+                  </svg>
+                  <span>Big-O Cheat Sheet</span>
+                </button>
+              </div>
+            </div>
+            <div class="hero-graphic" aria-hidden="true">
+              <div class="graphic-glow"></div>
+              <div class="graphic-bars">
+                <div class="bar bar-1"></div>
+                <div class="bar bar-2"></div>
+                <div class="bar bar-3"></div>
+                <div class="bar bar-4"></div>
+                <div class="bar bar-5"></div>
+                <div class="bar bar-6"></div>
+                <div class="bar bar-7"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Stats / Metrics Grid -->
+          <div class="stats-grid">
+            <div class="stat-card">
+              <div class="stat-icon-wrapper purple">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+                  <polyline points="2 17 12 22 22 17"></polyline>
+                  <polyline points="2 12 12 17 22 12"></polyline>
+                </svg>
+              </div>
+              <div class="stat-content">
+                <span class="stat-value">28+</span>
+                <span class="stat-label">Total Algorithms</span>
+                <span class="stat-meta">Sorting, Searching, Graphs & DS</span>
+              </div>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-icon-wrapper cyan">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="3" y="3" width="7" height="7"></rect>
+                  <rect x="14" y="3" width="7" height="7"></rect>
+                  <rect x="14" y="14" width="7" height="7"></rect>
+                  <rect x="3" y="14" width="7" height="7"></rect>
+                </svg>
+              </div>
+              <div class="stat-content">
+                <span class="stat-value">5</span>
+                <span class="stat-label">Core Categories</span>
+                <span class="stat-meta">Comprehensive DSA tracks</span>
+              </div>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-icon-wrapper blue">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <polyline points="12 6 12 12 16 14"></polyline>
+                </svg>
+              </div>
+              <div class="stat-content">
+                <span class="stat-value">O(1) – O(N!)</span>
+                <span class="stat-label">Complexity Bounds</span>
+                <span class="stat-meta">Time & Space benchmarks</span>
+              </div>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-icon-wrapper emerald">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                  <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                </svg>
+              </div>
+              <div class="stat-content">
+                <span class="stat-value">Interactive</span>
+                <span class="stat-label">Visualizer Engine</span>
+                <span class="stat-meta">Step-by-step playback</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Learning Progress Section -->
+          <div class="dashboard-section-card progress-card">
+            <div class="section-card-header">
+              <div>
+                <h2 class="section-card-title">Learning Track Progress</h2>
+                <p class="section-card-subtitle">Your personal mastery roadmap across algorithmic concepts</p>
+              </div>
+              <div class="progress-percent-badge">14% Complete</div>
+            </div>
+
+            <div class="progress-bar-container">
+              <div class="progress-bar-track">
+                <div class="progress-bar-fill" style="width: 14%;"></div>
+              </div>
+            </div>
+
+            <div class="progress-breakdown-grid">
+              <div class="progress-item">
+                <div class="progress-item-head">
+                  <span class="progress-item-name">Sorting Visualizers</span>
+                  <span class="progress-item-count">2 / 8</span>
+                </div>
+                <div class="mini-bar-track">
+                  <div class="mini-bar-fill purple" style="width: 25%;"></div>
+                </div>
+              </div>
+
+              <div class="progress-item">
+                <div class="progress-item-head">
+                  <span class="progress-item-name">Searching Traversal</span>
+                  <span class="progress-item-count">1 / 5</span>
+                </div>
+                <div class="mini-bar-track">
+                  <div class="mini-bar-fill cyan" style="width: 20%;"></div>
+                </div>
+              </div>
+
+              <div class="progress-item">
+                <div class="progress-item-head">
+                  <span class="progress-item-name">Graph Algorithms</span>
+                  <span class="progress-item-count">0 / 7</span>
+                </div>
+                <div class="mini-bar-track">
+                  <div class="mini-bar-fill blue" style="width: 0%;"></div>
+                </div>
+              </div>
+
+              <div class="progress-item">
+                <div class="progress-item-head">
+                  <span class="progress-item-name">Data Structures</span>
+                  <span class="progress-item-count">1 / 8</span>
+                </div>
+                <div class="mini-bar-track">
+                  <div class="mini-bar-fill emerald" style="width: 12.5%;"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Algorithm Categories Grid -->
+          <div class="categories-section">
+            <div class="section-header-row">
+              <div>
+                <h2 class="section-title">Algorithm Categories</h2>
+                <p class="section-subtitle">Select a domain to dive into visual demonstrations and step execution</p>
+              </div>
+            </div>
+
+            <div class="categories-grid">
+              <!-- Card 1: Sorting -->
+              <div class="category-card" data-navigate="sorting">
+                <div class="category-card-top">
+                  <div class="category-icon-box purple">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <line x1="18" y1="20" x2="18" y2="10"></line>
+                      <line x1="12" y1="20" x2="12" y2="4"></line>
+                      <line x1="6" y1="20" x2="6" y2="14"></line>
+                    </svg>
+                  </div>
+                  <span class="category-badge">8 Algorithms</span>
+                </div>
+                <h3 class="category-title">Sorting Algorithms</h3>
+                <p class="category-desc">
+                  Explore comparative and non-comparative sorting algorithms. Visualize comparisons, swaps, and
+                  recursive partitions.
+                </p>
+                <div class="category-tags">
+                  <span class="tag">Quick Sort</span>
+                  <span class="tag">Merge Sort</span>
+                  <span class="tag">Heap Sort</span>
+                  <span class="tag">+5 more</span>
+                </div>
+                <div class="category-footer">
+                  <span class="card-action-link">
+                    Open Visualizer
+                    <svg class="arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <line x1="5" y1="12" x2="19" y2="12"></line>
+                      <polyline points="12 5 19 12 12 19"></polyline>
+                    </svg>
+                  </span>
+                </div>
+              </div>
+
+              <!-- Card 2: Searching -->
+              <div class="category-card" data-navigate="searching">
+                <div class="category-card-top">
+                  <div class="category-icon-box cyan">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <circle cx="11" cy="11" r="8"></circle>
+                      <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    </svg>
+                  </div>
+                  <span class="category-badge">5 Algorithms</span>
+                </div>
+                <h3 class="category-title">Searching Algorithms</h3>
+                <p class="category-desc">
+                  Understand how elements are located inside sorted and unsorted collections through interval division
+                  and linear scans.
+                </p>
+                <div class="category-tags">
+                  <span class="tag">Binary Search</span>
+                  <span class="tag">Two Pointers</span>
+                  <span class="tag">Exponential</span>
+                  <span class="tag">+2 more</span>
+                </div>
+                <div class="category-footer">
+                  <span class="card-action-link">
+                    Open Visualizer
+                    <svg class="arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <line x1="5" y1="12" x2="19" y2="12"></line>
+                      <polyline points="12 5 19 12 12 19"></polyline>
+                    </svg>
+                  </span>
+                </div>
+              </div>
+
+              <!-- Card 3: Graphs -->
+              <div class="category-card" data-navigate="graphs">
+                <div class="category-card-top">
+                  <div class="category-icon-box blue">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <circle cx="6" cy="6" r="3"></circle>
+                      <circle cx="18" cy="6" r="3"></circle>
+                      <circle cx="18" cy="18" r="3"></circle>
+                      <circle cx="6" cy="18" r="3"></circle>
+                      <line x1="8.5" y1="7.5" x2="15.5" y2="16.5"></line>
+                      <line x1="6" y1="9" x2="6" y2="15"></line>
+                    </svg>
+                  </div>
+                  <span class="category-badge">7 Algorithms</span>
+                </div>
+                <h3 class="category-title">Graph Algorithms</h3>
+                <p class="category-desc">
+                  Traverse vertices, discover shortest paths, and generate minimum spanning trees on custom interactive
+                  node graphs.
+                </p>
+                <div class="category-tags">
+                  <span class="tag">Dijkstra</span>
+                  <span class="tag">BFS & DFS</span>
+                  <span class="tag">A* Search</span>
+                  <span class="tag">Kruskal</span>
+                </div>
+                <div class="category-footer">
+                  <span class="card-action-link">
+                    Open Visualizer
+                    <svg class="arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <line x1="5" y1="12" x2="19" y2="12"></line>
+                      <polyline points="12 5 19 12 12 19"></polyline>
+                    </svg>
+                  </span>
+                </div>
+              </div>
+
+              <!-- Card 4: Data Structures -->
+              <div class="category-card" data-navigate="data-structures">
+                <div class="category-card-top">
+                  <div class="category-icon-box emerald">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path
+                        d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z">
+                      </path>
+                      <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+                      <line x1="12" y1="22.08" x2="12" y2="12"></line>
+                    </svg>
+                  </div>
+                  <span class="category-badge">8 Structures</span>
+                </div>
+                <h3 class="category-title">Data Structures</h3>
+                <p class="category-desc">
+                  Inspect dynamic memory layouts, pointer updates, and tree balancing in real-time with continuous node
+                  animations.
+                </p>
+                <div class="category-tags">
+                  <span class="tag">AVL Tree</span>
+                  <span class="tag">Binary Heap</span>
+                  <span class="tag">Linked List</span>
+                  <span class="tag">Trie</span>
+                </div>
+                <div class="category-footer">
+                  <span class="card-action-link">
+                    Open Visualizer
+                    <svg class="arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <line x1="5" y1="12" x2="19" y2="12"></line>
+                      <polyline points="12 5 19 12 12 19"></polyline>
+                    </svg>
+                  </span>
+                </div>
+              </div>
+
+              <!-- Card 5: Complexity Analysis -->
+              <div class="category-card" data-navigate="complexity">
+                <div class="category-card-top">
+                  <div class="category-icon-box amber">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+                    </svg>
+                  </div>
+                  <span class="category-badge">Reference</span>
+                </div>
+                <h3 class="category-title">Complexity Analysis</h3>
+                <p class="category-desc">
+                  Interactive asymptotic notation graphs comparing Big-O time and space growth rates from logarithmic to
+                  exponential.
+                </p>
+                <div class="category-tags">
+                  <span class="tag">O(1)</span>
+                  <span class="tag">O(log N)</span>
+                  <span class="tag">O(N log N)</span>
+                  <span class="tag">O(N²)</span>
+                </div>
+                <div class="category-footer">
+                  <span class="card-action-link">
+                    Open Analysis
+                    <svg class="arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <line x1="5" y1="12" x2="19" y2="12"></line>
+                      <polyline points="12 5 19 12 12 19"></polyline>
+                    </svg>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Recently Explored Section -->
+          <div class="dashboard-section-card recent-section">
+            <div class="section-card-header">
+              <div>
+                <h2 class="section-card-title">Recently Explored Algorithms</h2>
+                <p class="section-card-subtitle">Resume your algorithmic study right where you left off</p>
+              </div>
+              <span class="pill-indicator">4 Tracked Sessions</span>
+            </div>
+
+            <div class="recent-table-wrapper">
+              <table class="recent-table">
+                <thead>
+                  <tr>
+                    <th>Algorithm</th>
+                    <th>Category</th>
+                    <th>Time Complexity</th>
+                    <th>Space Complexity</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>
+                      <div class="algo-identity">
+                        <div class="algo-type-dot purple"></div>
+                        <div>
+                          <div class="algo-name">Merge Sort</div>
+                          <div class="algo-sub">Divide and Conquer</div>
+                        </div>
+                      </div>
+                    </td>
+                    <td><span class="category-pill">Sorting</span></td>
+                    <td><code class="code-badge">O(N log N)</code></td>
+                    <td><code class="code-badge">O(N)</code></td>
+                    <td><span class="status-badge-chip reviewed">Explored</span></td>
+                    <td>
+                      <button class="table-action-btn nav-trigger" data-navigate="sorting">
+                        Launch
+                      </button>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td>
+                      <div class="algo-identity">
+                        <div class="algo-type-dot cyan"></div>
+                        <div>
+                          <div class="algo-name">Binary Search</div>
+                          <div class="algo-sub">Interval Halving</div>
+                        </div>
+                      </div>
+                    </td>
+                    <td><span class="category-pill">Searching</span></td>
+                    <td><code class="code-badge">O(log N)</code></td>
+                    <td><code class="code-badge">O(1)</code></td>
+                    <td><span class="status-badge-chip ready">Completed</span></td>
+                    <td>
+                      <button class="table-action-btn nav-trigger" data-navigate="searching">
+                        Launch
+                      </button>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td>
+                      <div class="algo-identity">
+                        <div class="algo-type-dot blue"></div>
+                        <div>
+                          <div class="algo-name">Dijkstra's Algorithm</div>
+                          <div class="algo-sub">Single-Source Shortest Path</div>
+                        </div>
+                      </div>
+                    </td>
+                    <td><span class="category-pill">Graphs</span></td>
+                    <td><code class="code-badge">O((V+E) log V)</code></td>
+                    <td><code class="code-badge">O(V)</code></td>
+                    <td><span class="status-badge-chip in-progress">Queued</span></td>
+                    <td>
+                      <button class="table-action-btn nav-trigger" data-navigate="graphs">
+                        Launch
+                      </button>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td>
+                      <div class="algo-identity">
+                        <div class="algo-type-dot emerald"></div>
+                        <div>
+                          <div class="algo-name">Binary Search Tree (BST)</div>
+                          <div class="algo-sub">Hierarchical Ordered Nodes</div>
+                        </div>
+                      </div>
+                    </td>
+                    <td><span class="category-pill">Data Structures</span></td>
+                    <td><code class="code-badge">O(log N) avg</code></td>
+                    <td><code class="code-badge">O(N)</code></td>
+                    <td><span class="status-badge-chip reviewed">Explored</span></td>
+                    <td>
+                      <button class="table-action-btn nav-trigger" data-navigate="data-structures">
+                        Launch
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+        </section>
+
+        <!-- 2. SORTING VIEW (Interactive Workspace) -->
+        <section id="sorting" class="content-view" aria-labelledby="sorting-title">
+
+          <!-- Top Header & Breadcrumb Info -->
+          <div class="section-top-header">
+            <div class="section-tag-group">
+              <span class="section-tag purple">Module 01</span>
+              <span class="section-version-tag">Interactive Workspace</span>
+            </div>
+            <h1 id="sorting-title" class="view-title">Sorting Algorithms</h1>
+            <p class="view-subtitle">Interactive comparison visualizer for element ordering, partitioning, and recursion
+            </p>
+          </div>
+
+          <!-- Algorithm Selector Bar (Tabs + Mobile Dropdown) -->
+          <div class="sorting-selector-bar">
+            <div class="algo-tabs-list" role="tablist">
+              <button class="algo-tab-btn active" data-algo="bubble" role="tab" aria-selected="true">
+                <span class="tab-indicator"></span>
+                <span>Bubble Sort</span>
+              </button>
+              <button class="algo-tab-btn" data-algo="selection" role="tab" aria-selected="false">
+                <span class="tab-indicator"></span>
+                <span>Selection Sort</span>
+              </button>
+              <button class="algo-tab-btn" data-algo="insertion" role="tab" aria-selected="false">
+                <span class="tab-indicator"></span>
+                <span>Insertion Sort</span>
+              </button>
+              <button class="algo-tab-btn" data-algo="merge" role="tab" aria-selected="false">
+                <span class="tab-indicator"></span>
+                <span>Merge Sort</span>
+              </button>
+              <button class="algo-tab-btn" data-algo="quick" role="tab" aria-selected="false">
+                <span class="tab-indicator"></span>
+                <span>Quick Sort</span>
+              </button>
+            </div>
+
+            <!-- Mobile Selection Dropdown -->
+            <div class="algo-dropdown-wrapper">
+              <select id="sortAlgoSelect" class="form-select" aria-label="Select Sorting Algorithm">
+                <option value="bubble" selected>Bubble Sort</option>
+                <option value="selection">Selection Sort</option>
+                <option value="insertion">Insertion Sort</option>
+                <option value="merge">Merge Sort</option>
+                <option value="quick">Quick Sort</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Algorithm Meta & Complexity Information Card -->
+          <div class="algo-info-card">
+            <div class="algo-info-main">
+              <div class="algo-info-header">
+                <h2 class="algo-info-title" id="sortingAlgoTitle">Bubble Sort</h2>
+                <span class="algo-info-category" id="sortingAlgoCategory">Comparison-based Sorting</span>
+              </div>
+              <p class="algo-info-desc" id="sortingAlgoDesc">
+                Repeatedly steps through the list, compares adjacent elements, and swaps them if they are in the wrong
+                order.
+              </p>
+            </div>
+
+            <!-- Complexities Grid -->
+            <div class="algo-complexities-grid">
+              <div class="complexity-box">
+                <span class="complexity-label">Best Time</span>
+                <code class="complexity-val best" id="compTimeBest">O(N)</code>
+              </div>
+              <div class="complexity-box">
+                <span class="complexity-label">Avg Time</span>
+                <code class="complexity-val avg" id="compTimeAvg">O(N²)</code>
+              </div>
+              <div class="complexity-box">
+                <span class="complexity-label">Worst Time</span>
+                <code class="complexity-val worst" id="compTimeWorst">O(N²)</code>
+              </div>
+              <div class="complexity-box">
+                <span class="complexity-label">Space</span>
+                <code class="complexity-val space" id="compSpace">O(1)</code>
+              </div>
+            </div>
+          </div>
+
+          <!-- Visualizer Stage Card -->
+          <div class="visualizer-stage-card">
+            <div class="stage-card-header">
+              <div class="stage-header-title-group">
+                <div class="pulse-indicator-dot"></div>
+                <span class="stage-title">Vertical Bar Visualizer</span>
+                <span id="statStepCounter" class="stage-step-pill">Step 1 of 1</span>
+              </div>
+              <div class="stage-header-actions">
+                <span id="sortingStatusBadge" class="status-badge-chip ready">Ready</span>
+              </div>
+            </div>
+
+            <!-- Step Explanation Banner -->
+            <div class="step-explanation-banner">
+              <svg class="step-info-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="12" y1="16" x2="12" y2="12"></line>
+                <line x1="12" y1="8" x2="12.01" y2="8"></line>
+              </svg>
+              <span id="sortingStepExplanation" class="explanation-text">Ready to begin sorting.</span>
+            </div>
+
+            <!-- Vertical Bar Canvas -->
+            <div class="canvas-viewport">
+              <div id="sortingBarsCanvas" class="sorting-canvas"></div>
+            </div>
+
+            <!-- Visual Legend Bar -->
+            <div class="legend-bar">
+              <div class="legend-item">
+                <span class="legend-dot normal"></span>
+                <span class="legend-text">Normal</span>
+              </div>
+              <div class="legend-item">
+                <span class="legend-dot compared"></span>
+                <span class="legend-text">Comparing</span>
+              </div>
+              <div class="legend-item">
+                <span class="legend-dot swapped"></span>
+                <span class="legend-text">Swapped / Shifted</span>
+              </div>
+              <div class="legend-item">
+                <span class="legend-dot sorted"></span>
+                <span class="legend-text">Sorted</span>
+              </div>
+              <div class="legend-item">
+                <span class="legend-dot pivot"></span>
+                <span class="legend-text">Pivot (Quick Sort)</span>
+              </div>
+              <div class="legend-item">
+                <span class="legend-dot merge-range"></span>
+                <span class="legend-text">Active Range (Merge)</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Interactive Control Toolbar -->
+          <div class="sorting-controls-card">
+
+            <!-- Row 1: Playback Controls & Speed -->
+            <div class="controls-row playback-row">
+              <div class="playback-btn-group">
+                <button id="sortStartBtn" class="btn btn-primary" title="Start sorting animation">
+                  <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                  </svg>
+                  <span>Start</span>
+                </button>
+                <button id="sortPauseBtn" class="btn btn-secondary" style="display: none;" title="Pause execution">
+                  <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="6" y="4" width="4" height="16"></rect>
+                    <rect x="14" y="4" width="4" height="16"></rect>
+                  </svg>
+                  <span>Pause</span>
+                </button>
+                <button id="sortResumeBtn" class="btn btn-primary" style="display: none;" title="Resume execution">
+                  <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                  </svg>
+                  <span>Resume</span>
+                </button>
+                <button id="sortPrevBtn" class="btn btn-secondary" title="Previous step (restore state)">
+                  <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="15 18 9 12 15 6"></polyline>
+                  </svg>
+                  <span>Prev Step</span>
+                </button>
+                <button id="sortNextBtn" class="btn btn-secondary" title="Next step">
+                  <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="9 18 15 12 9 6"></polyline>
+                  </svg>
+                  <span>Next Step</span>
+                </button>
+                <button id="sortResetBtn" class="btn btn-ghost" title="Reset to initial state">
+                  <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="1 4 1 10 7 10"></polyline>
+                    <path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"></path>
+                  </svg>
+                  <span>Reset</span>
+                </button>
+              </div>
+
+              <!-- Speed Slider -->
+              <div class="control-slider-group">
+                <span class="control-label">Speed:</span>
+                <input type="range" id="sortSpeedSlider" class="form-range" min="1" max="100" value="70">
+                <span id="sortSpeedLabel" class="slider-badge">7.0x</span>
+              </div>
+            </div>
+
+            <!-- Row 2: Array Generation, Size, & Range Settings -->
+            <div class="controls-row generation-row">
+              <div class="gen-left-group">
+                <button id="sortRandomBtn" class="btn btn-secondary btn-sm" title="Generate new random array">
+                  <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="16 3 21 3 21 8"></polyline>
+                    <line x1="4" y1="20" x2="21" y2="3"></line>
+                    <polyline points="21 16 21 21 16 21"></polyline>
+                    <line x1="15" y1="15" x2="21" y2="21"></line>
+                    <line x1="4" y1="4" x2="9" y2="9"></line>
+                  </svg>
+                  <span>Random Array</span>
+                </button>
+
+                <!-- Size Slider -->
+                <div class="control-slider-group">
+                  <span class="control-label">Size:</span>
+                  <input type="range" id="sortSizeSlider" class="form-range" min="5" max="35" value="12">
+                  <span id="sortSizeLabel" class="slider-badge">12</span>
+                </div>
+
+                <!-- Range Settings -->
+                <div class="range-settings-group">
+                  <label class="control-label" for="sortMinValue">Min:</label>
+                  <input type="number" id="sortMinValue" class="form-num-input" value="5" min="-100" max="100">
+                  <label class="control-label" for="sortMaxValue">Max:</label>
+                  <input type="number" id="sortMaxValue" class="form-num-input" value="95" min="-100" max="200">
+                </div>
+              </div>
+            </div>
+
+            <!-- Row 3: Custom Array Input & Presets -->
+            <div class="controls-row custom-input-row">
+              <div class="custom-input-group">
+                <span class="control-label">Custom Array:</span>
+                <div class="input-with-button">
+                  <input type="text" id="sortCustomInput" class="form-text-input"
+                    placeholder="e.g. 45, -12, 88, 3, 27, 45, 0, -5" autocomplete="off">
+                  <button id="sortApplyCustomBtn" class="btn btn-secondary btn-sm">Apply</button>
+                </div>
+              </div>
+
+              <!-- Quick Presets -->
+              <div class="presets-group">
+                <span class="presets-label">Presets:</span>
+                <button class="preset-chip" data-preset="reverse">Reverse Sorted</button>
+                <button class="preset-chip" data-preset="sorted">Already Sorted</button>
+                <button class="preset-chip" data-preset="duplicates">With Duplicates</button>
+                <button class="preset-chip" data-preset="negatives">Negative Values</button>
+                <button class="preset-chip" data-preset="single">Single Element</button>
+              </div>
+            </div>
+
+            <!-- Error message container -->
+            <div id="sortCustomInputError" class="custom-input-error" style="display: none;"></div>
+          </div>
+
+          <!-- Bottom Columns: Statistics Dashboard & C++ Code Panel -->
+          <div class="sorting-details-grid">
+
+            <!-- Statistics Dashboard -->
+            <div class="sorting-card stats-dashboard-card">
+              <div class="card-head">
+                <h3 class="card-title">Execution Statistics</h3>
+                <span class="card-sub">Real-time algorithmic metric tracking</span>
+              </div>
+
+              <div class="stats-metric-tiles">
+                <div class="metric-tile">
+                  <div class="metric-icon-box purple">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+                    </svg>
+                  </div>
+                  <div class="metric-data">
+                    <span class="metric-val" id="statComparisons">0</span>
+                    <span class="metric-lbl">Comparisons</span>
+                  </div>
+                </div>
+
+                <div class="metric-tile">
+                  <div class="metric-icon-box cyan">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <polyline points="16 3 21 3 21 8"></polyline>
+                      <line x1="4" y1="20" x2="21" y2="3"></line>
+                      <polyline points="21 16 21 21 16 21"></polyline>
+                    </svg>
+                  </div>
+                  <div class="metric-data">
+                    <span class="metric-val" id="statSwaps">0</span>
+                    <span class="metric-lbl">Swaps / Shifts</span>
+                  </div>
+                </div>
+
+                <div class="metric-tile">
+                  <div class="metric-icon-box blue">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path
+                        d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z">
+                      </path>
+                    </svg>
+                  </div>
+                  <div class="metric-data">
+                    <span class="metric-val" id="statAccesses">0</span>
+                    <span class="metric-lbl">Array Accesses</span>
+                  </div>
+                </div>
+
+                <div class="metric-tile">
+                  <div class="metric-icon-box emerald">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <circle cx="12" cy="12" r="10"></circle>
+                      <polyline points="12 6 12 12 16 14"></polyline>
+                    </svg>
+                  </div>
+                  <div class="metric-data">
+                    <span class="metric-val" id="statPass">1</span>
+                    <span class="metric-lbl">Current Pass / Stage</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Progress Bar -->
+              <div class="metric-progress-wrapper">
+                <div class="progress-head">
+                  <span class="progress-title">Trace Completion</span>
+                  <span class="progress-value" id="statProgress">0%</span>
+                </div>
+                <div class="progress-bar-track">
+                  <div class="progress-bar-fill" id="statProgressBar" style="width: 0%;"></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- C++ Code Panel -->
+            <div class="sorting-card cpp-code-card">
+              <div class="card-head">
+                <div class="cpp-head-left">
+                  <h3 class="card-title">C++ Implementation</h3>
+                  <span class="cpp-badge">Source & Execution Track</span>
+                </div>
+              </div>
+
+              <div class="cpp-code-scroll">
+                <div id="sortingCppCode" class="cpp-code-container"></div>
+              </div>
+            </div>
+
+          </div>
+
+        </section>
+
+        <!-- 3. SEARCHING VIEW (Interactive Workspace) -->
+        <section id="searching" class="content-view" aria-labelledby="searching-title">
+          
+          <!-- Top Header & Breadcrumb Info -->
+          <div class="section-top-header">
+            <div class="section-tag-group">
+              <span class="section-tag cyan">Module 02</span>
+              <span class="section-version-tag">Interactive Workspace</span>
+            </div>
+            <h1 id="searching-title" class="view-title">Searching Algorithms</h1>
+            <p class="view-subtitle">Interactive comparison visualizer for element lookup, pointer scans, and interval halving</p>
+          </div>
+
+          <!-- Algorithm Selector Bar (Tabs + Mobile Dropdown) -->
+          <div class="sorting-selector-bar">
+            <div class="algo-tabs-list" role="tablist">
+              <button class="algo-tab-btn search-algo-tab-btn active" data-algo="linear" role="tab" aria-selected="true">
+                <span class="tab-indicator"></span>
+                <span>Linear Search</span>
+              </button>
+              <button class="algo-tab-btn search-algo-tab-btn" data-algo="binary" role="tab" aria-selected="false">
+                <span class="tab-indicator"></span>
+                <span>Binary Search</span>
+              </button>
+            </div>
+
+            <!-- Mobile Selection Dropdown -->
+            <div class="algo-dropdown-wrapper">
+              <select id="searchAlgoSelect" class="form-select" aria-label="Select Searching Algorithm">
+                <option value="linear" selected>Linear Search</option>
+                <option value="binary">Binary Search</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Algorithm Meta & Complexity Information Card -->
+          <div class="algo-info-card">
+            <div class="algo-info-main">
+              <div class="algo-info-header">
+                <h2 class="algo-info-title" id="searchAlgoTitle">Linear Search</h2>
+                <span class="algo-info-category" id="searchAlgoCategory">Sequential Search</span>
+              </div>
+              <p class="algo-info-desc" id="searchAlgoDesc">
+                Sequentially checks each element of the list in order until a match is found or the whole list has been searched.
+              </p>
+            </div>
+
+            <!-- Complexities Grid -->
+            <div class="algo-complexities-grid">
+              <div class="complexity-box">
+                <span class="complexity-label">Best Time</span>
+                <code class="complexity-val best" id="searchCompTimeBest">O(1)</code>
+              </div>
+              <div class="complexity-box">
+                <span class="complexity-label">Avg Time</span>
+                <code class="complexity-val avg" id="searchCompTimeAvg">O(N)</code>
+              </div>
+              <div class="complexity-box">
+                <span class="complexity-label">Worst Time</span>
+                <code class="complexity-val worst" id="searchCompTimeWorst">O(N)</code>
+              </div>
+              <div class="complexity-box">
+                <span class="complexity-label">Space</span>
+                <code class="complexity-val space" id="searchCompSpace">O(1)</code>
+              </div>
+            </div>
+          </div>
+
+          <!-- Visualizer Stage Card -->
+          <div class="visualizer-stage-card">
+            <div class="stage-card-header">
+              <div class="stage-header-title-group">
+                <div class="pulse-indicator-dot"></div>
+                <span class="stage-title">Search Canvas & Pointer Tracking</span>
+                <span id="searchStepCounter" class="stage-step-pill">Step 1 of 1</span>
+              </div>
+              <div class="stage-header-actions">
+                <span id="searchStatusBadge" class="status-badge-chip ready">Ready</span>
+              </div>
+            </div>
+
+            <!-- Step Explanation Banner -->
+            <div class="step-explanation-banner">
+              <svg class="step-info-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="12" y1="16" x2="12" y2="12"></line>
+                <line x1="12" y1="8" x2="12.01" y2="8"></line>
+              </svg>
+              <span id="searchingStepExplanation" class="explanation-text">Ready to begin search.</span>
+            </div>
+
+            <!-- Canvas Viewport -->
+            <div class="canvas-viewport">
+              <div id="searchingBarsCanvas" class="searching-canvas"></div>
+            </div>
+
+            <!-- Visual Legend Bar -->
+            <div class="legend-bar">
+              <div class="legend-item">
+                <span class="legend-dot normal"></span>
+                <span class="legend-text">Unvisited</span>
+              </div>
+              <div class="legend-item">
+                <span class="legend-dot compared"></span>
+                <span class="legend-text">Current / Mid Element</span>
+              </div>
+              <div class="legend-item">
+                <span class="legend-dot merge-range"></span>
+                <span class="legend-text">Active Range [Low..High]</span>
+              </div>
+              <div class="legend-item">
+                <span class="legend-dot eliminated"></span>
+                <span class="legend-text">Eliminated Half</span>
+              </div>
+              <div class="legend-item">
+                <span class="legend-dot sorted"></span>
+                <span class="legend-text">Target Found</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Interactive Control Toolbar -->
+          <div class="sorting-controls-card">
+            
+            <!-- Row 1: Playback Controls & Speed -->
+            <div class="controls-row playback-row">
+              <div class="playback-btn-group">
+                <button id="searchStartBtn" class="btn btn-primary" title="Start search animation">
+                  <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                  </svg>
+                  <span>Start Search</span>
+                </button>
+                <button id="searchPauseBtn" class="btn btn-secondary" style="display: none;" title="Pause search">
+                  <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="6" y="4" width="4" height="16"></rect>
+                    <rect x="14" y="4" width="4" height="16"></rect>
+                  </svg>
+                  <span>Pause</span>
+                </button>
+                <button id="searchResumeBtn" class="btn btn-primary" style="display: none;" title="Resume search">
+                  <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                  </svg>
+                  <span>Resume</span>
+                </button>
+                <button id="searchPrevBtn" class="btn btn-secondary" title="Previous step">
+                  <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="15 18 9 12 15 6"></polyline>
+                  </svg>
+                  <span>Prev Step</span>
+                </button>
+                <button id="searchNextBtn" class="btn btn-secondary" title="Next step">
+                  <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="9 18 15 12 9 6"></polyline>
+                  </svg>
+                  <span>Next Step</span>
+                </button>
+                <button id="searchResetBtn" class="btn btn-ghost" title="Reset search">
+                  <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="1 4 1 10 7 10"></polyline>
+                    <path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"></path>
+                  </svg>
+                  <span>Reset</span>
+                </button>
+              </div>
+
+              <!-- Speed Slider -->
+              <div class="control-slider-group">
+                <span class="control-label">Speed:</span>
+                <input type="range" id="searchSpeedSlider" class="form-range" min="1" max="100" value="65">
+                <span id="searchSpeedLabel" class="slider-badge">6.5x</span>
+              </div>
+            </div>
+
+            <!-- Row 2: Target Input & Random Generation -->
+            <div class="controls-row generation-row">
+              <div class="gen-left-group">
+                <button id="searchRandomBtn" class="btn btn-secondary btn-sm" title="Generate random search array">
+                  <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="16 3 21 3 21 8"></polyline>
+                    <line x1="4" y1="20" x2="21" y2="3"></line>
+                    <polyline points="21 16 21 21 16 21"></polyline>
+                    <line x1="15" y1="15" x2="21" y2="21"></line>
+                    <line x1="4" y1="4" x2="9" y2="9"></line>
+                  </svg>
+                  <span>Random Array</span>
+                </button>
+
+                <!-- Target Input Box -->
+                <div class="search-target-box">
+                  <label class="control-label" for="searchTargetInput">Target Value:</label>
+                  <input type="number" id="searchTargetInput" class="form-num-input target-input" value="53">
+                  <button id="searchApplyTargetBtn" class="btn btn-secondary btn-sm">Set Target</button>
+                </div>
+
+                <!-- Sort Array button if array is unsorted for binary search -->
+                <button id="searchSortArrayBtn" class="btn btn-primary btn-sm" style="display: none;" title="Sort this array for Binary Search">
+                  <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="18" y1="20" x2="18" y2="10"></line>
+                    <line x1="12" y1="20" x2="12" y2="4"></line>
+                    <line x1="6" y1="20" x2="6" y2="14"></line>
+                  </svg>
+                  <span>Sort Array</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Row 3: Custom Array Input & Presets -->
+            <div class="controls-row custom-input-row">
+              <div class="custom-input-group">
+                <span class="control-label">Custom Array:</span>
+                <div class="input-with-button">
+                  <input type="text" id="searchCustomInput" class="form-text-input" placeholder="e.g. 10, 24, 35, 47, 53, 68, 72, 85, 91" autocomplete="off">
+                  <button id="searchApplyCustomBtn" class="btn btn-secondary btn-sm">Apply</button>
+                </div>
+              </div>
+
+              <!-- Quick Presets -->
+              <div class="presets-group">
+                <span class="presets-label">Presets:</span>
+                <button class="preset-chip search-preset-chip" data-preset="found">Target Exists</button>
+                <button class="preset-chip search-preset-chip" data-preset="notfound">Target Absent</button>
+                <button class="preset-chip search-preset-chip" data-preset="duplicates">With Duplicates</button>
+                <button class="preset-chip search-preset-chip" data-preset="negatives">Negatives</button>
+                <button class="preset-chip search-preset-chip" data-preset="single">Single Element</button>
+                <button class="preset-chip search-preset-chip" data-preset="empty">Empty Array</button>
+              </div>
+            </div>
+
+            <!-- Error message container -->
+            <div id="searchCustomInputError" class="custom-input-error search-validation-banner" style="display: none;"></div>
+          </div>
+
+          <!-- Bottom Columns: Statistics Dashboard & C++ Code Panel -->
+          <div class="sorting-details-grid">
+            
+            <!-- Statistics Dashboard -->
+            <div class="sorting-card stats-dashboard-card">
+              <div class="card-head">
+                <h3 class="card-title">Search Statistics</h3>
+                <span class="card-sub">Real-time pointer and comparison metrics</span>
+              </div>
+
+              <div class="stats-metric-tiles">
+                <div class="metric-tile">
+                  <div class="metric-icon-box purple">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+                    </svg>
+                  </div>
+                  <div class="metric-data">
+                    <span class="metric-val" id="searchStatComparisons">0</span>
+                    <span class="metric-lbl">Comparisons Made</span>
+                  </div>
+                </div>
+
+                <div class="metric-tile">
+                  <div class="metric-icon-box cyan">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                      <circle cx="11" cy="11" r="8"></circle>
+                    </svg>
+                  </div>
+                  <div class="metric-data">
+                    <span class="metric-val" id="searchStatCurrentIndex">None</span>
+                    <span class="metric-lbl">Current / Mid Index</span>
+                  </div>
+                </div>
+
+                <div class="metric-tile">
+                  <div class="metric-icon-box blue">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <line x1="4" y1="21" x2="4" y2="14"></line>
+                      <line x1="4" y1="10" x2="4" y2="3"></line>
+                      <line x1="12" y1="21" x2="12" y2="12"></line>
+                      <line x1="12" y1="8" x2="12" y2="3"></line>
+                      <line x1="20" y1="21" x2="20" y2="16"></line>
+                      <line x1="20" y1="12" x2="20" y2="3"></line>
+                    </svg>
+                  </div>
+                  <div class="metric-data">
+                    <span class="metric-val" id="searchStatSearchRange">[0 .. 0]</span>
+                    <span class="metric-lbl">Active Search Range</span>
+                  </div>
+                </div>
+
+                <div class="metric-tile">
+                  <div class="metric-icon-box emerald">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                      <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                    </svg>
+                  </div>
+                  <div class="metric-data">
+                    <span class="metric-val" id="searchStatTargetStatus">Pending</span>
+                    <span class="metric-lbl">Target Status</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Extra Summary Info -->
+              <div class="search-summary-row">
+                <div class="summary-tile">
+                  <span class="summary-label">Final Result Index:</span>
+                  <span class="summary-value" id="searchStatFinalIndex">Pending</span>
+                </div>
+                <div class="summary-tile">
+                  <span class="summary-label">Execution Steps:</span>
+                  <span class="summary-value" id="searchStatSteps">0</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- C++ Code Panel -->
+            <div class="sorting-card cpp-code-card">
+              <div class="card-head">
+                <div class="cpp-head-left">
+                  <h3 class="card-title">C++ Implementation</h3>
+                  <span class="cpp-badge">Source & Execution Track</span>
+                </div>
+              </div>
+
+              <div class="cpp-code-scroll">
+                <div id="searchingCppCode" class="cpp-code-container"></div>
+              </div>
+            </div>
+
+          </div>
+
+        </section>
+
+        <!-- 4. GRAPH ALGORITHMS VIEW -->
+        <section id="graphs" class="content-view" aria-labelledby="graphs-title">
+          <!-- Section Header -->
+          <div class="section-top-header">
+            <div class="section-tag-group">
+              <span class="section-tag blue">Module 03</span>
+              <span class="section-version-tag">Interactive Graph Studio</span>
+            </div>
+            <h1 id="graphs-title" class="view-title">Graph Algorithms</h1>
+            <p class="view-subtitle">Draw interactive networks, test weighted paths, traversals, and spanning trees step-by-step</p>
+          </div>
+
+          <!-- Algorithm Selection Navigation -->
+          <div class="algo-nav-card" role="navigation" aria-label="Graph Algorithm Selection">
+            <div class="algo-tabs" role="tablist" id="graphAlgoTabs">
+              <button class="algo-tab-btn active" role="tab" aria-selected="true" data-algo="bfs" id="graphTab-bfs">
+                <span class="tab-indicator"></span>
+                <span class="tab-label">Breadth-First Search</span>
+              </button>
+              <button class="algo-tab-btn" role="tab" aria-selected="false" data-algo="dfs" id="graphTab-dfs">
+                <span class="tab-indicator"></span>
+                <span class="tab-label">Depth-First Search</span>
+              </button>
+              <button class="algo-tab-btn" role="tab" aria-selected="false" data-algo="dijkstra" id="graphTab-dijkstra">
+                <span class="tab-indicator"></span>
+                <span class="tab-label">Dijkstra's Algorithm</span>
+              </button>
+              <button class="algo-tab-btn" role="tab" aria-selected="false" data-algo="bellman" id="graphTab-bellman">
+                <span class="tab-indicator"></span>
+                <span class="tab-label">Bellman-Ford</span>
+              </button>
+              <button class="algo-tab-btn" role="tab" aria-selected="false" data-algo="kruskal" id="graphTab-kruskal">
+                <span class="tab-indicator"></span>
+                <span class="tab-label">Kruskal's MST</span>
+              </button>
+            </div>
+            <!-- Mobile Select Alternative -->
+            <div class="algo-select-mobile">
+              <label for="graphAlgoSelect" class="sr-only">Select Graph Algorithm</label>
+              <select id="graphAlgoSelect" class="algo-dropdown-select">
+                <option value="bfs" selected>Breadth-First Search (BFS)</option>
+                <option value="dfs">Depth-First Search (DFS)</option>
+                <option value="dijkstra">Dijkstra's Shortest Path</option>
+                <option value="bellman">Bellman-Ford Algorithm</option>
+                <option value="kruskal">Kruskal's MST / Forest</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Algorithm Description & Complexity Badges Card -->
+          <div class="algo-info-card" id="graphAlgoInfoCard">
+            <div class="algo-info-header">
+              <div>
+                <h2 class="algo-info-name" id="graphAlgoName">Breadth-First Search</h2>
+                <p class="algo-info-desc" id="graphAlgoDesc">
+                  Level-order graph traversal exploring all neighboring vertices at current depth before advancing deeper. Uses a FIFO queue.
+                </p>
+              </div>
+              <div class="complexity-group">
+                <div class="complexity-badge">
+                  <span class="badge-label">Time Complexity</span>
+                  <span class="badge-val" id="graphTimeComplexity">O(V + E)</span>
+                </div>
+                <div class="complexity-badge">
+                  <span class="badge-label">Space Complexity</span>
+                  <span class="badge-val" id="graphSpaceComplexity">O(V)</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Interactive Graph Editor & Canvas -->
+          <div class="viz-card">
+            <!-- Graph Editor Toolbar -->
+            <div class="graph-editor-toolbar" role="toolbar" aria-label="Graph Canvas Tools">
+              <div class="graph-tool-group">
+                <span class="tool-group-label">Canvas Tools:</span>
+                <button class="btn btn-secondary graph-tool-btn" id="toolSelect" title="Select or drag nodes and click edges">
+                  <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M3 3l7 18 3-7 7-3L3 3z"></path>
+                  </svg>
+                  <span>Select / Drag</span>
+                </button>
+                <button class="btn btn-secondary graph-tool-btn active" id="toolAddNode" title="Click canvas to drop a new node">
+                  <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <line x1="12" y1="8" x2="12" y2="16"></line>
+                    <line x1="8" y1="12" x2="16" y2="12"></line>
+                  </svg>
+                  <span>Add Node</span>
+                </button>
+                <button class="btn btn-secondary graph-tool-btn" id="toolAddEdge" title="Click source node then target node to link">
+                  <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M5 12h14"></path>
+                    <path d="M12 5l7 7-7 7"></path>
+                  </svg>
+                  <span>Add Edge</span>
+                </button>
+                <button class="btn btn-danger graph-tool-btn" id="toolDelete" title="Delete selected node or edge">
+                  <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="3 6 5 6 21 6"></polyline>
+                    <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                  </svg>
+                  <span>Delete</span>
+                </button>
+              </div>
+
+              <div class="graph-tool-group">
+                <span class="tool-group-label">Edge Weight:</span>
+                <input type="number" id="graphEdgeWeightInput" class="graph-weight-input" value="1" step="1" title="Edge weight for new/selected edge" />
+                <button class="btn btn-secondary btn-sm" id="graphApplyWeightBtn" title="Apply weight to selected edge">Set</button>
+              </div>
+
+              <div class="graph-tool-group">
+                <button class="btn btn-secondary btn-sm" id="graphDirectedToggle" title="Toggle between Directed and Undirected edges">
+                  Mode: <strong id="graphDirectedLabel">Undirected</strong>
+                </button>
+                <button class="btn btn-secondary btn-sm" id="graphSampleBtn" title="Load sample graph preset">
+                  Sample Graph
+                </button>
+                <button class="btn btn-secondary btn-sm btn-outline-danger" id="graphClearBtn" title="Clear all nodes and edges">
+                  Clear
+                </button>
+              </div>
+            </div>
+
+            <!-- Canvas Viewport -->
+            <div class="graph-canvas-viewport">
+              <svg id="graphSvgCanvas" class="graph-svg-canvas" width="100%" height="420" viewBox="0 0 900 420">
+                <defs>
+                  <marker id="arrow-default" viewBox="0 0 10 10" refX="22" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                    <path d="M 0 0 L 10 5 L 0 10 z" fill="#64748b"></path>
+                  </marker>
+                  <marker id="arrow-current" viewBox="0 0 10 10" refX="22" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                    <path d="M 0 0 L 10 5 L 0 10 z" fill="#f59e0b"></path>
+                  </marker>
+                  <marker id="arrow-accepted" viewBox="0 0 10 10" refX="22" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                    <path d="M 0 0 L 10 5 L 0 10 z" fill="#10b981"></path>
+                  </marker>
+                  <marker id="arrow-path" viewBox="0 0 10 10" refX="22" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                    <path d="M 0 0 L 10 5 L 0 10 z" fill="#06b6d4"></path>
+                  </marker>
+                </defs>
+                <g id="svgEdgeLayer"></g>
+                <g id="svgNodeLayer"></g>
+              </svg>
+            </div>
+
+            <!-- Visual Legend -->
+            <div class="graph-legend-bar" aria-label="Visual Color Legend">
+              <div class="legend-item">
+                <span class="legend-dot node-default-dot"></span>
+                <span>Unvisited</span>
+              </div>
+              <div class="legend-item">
+                <span class="legend-dot node-active-dot"></span>
+                <span>Current Node</span>
+              </div>
+              <div class="legend-item">
+                <span class="legend-dot node-visited-dot"></span>
+                <span>Visited</span>
+              </div>
+              <div class="legend-item">
+                <span class="legend-dot edge-active-dot"></span>
+                <span>Examining Edge</span>
+              </div>
+              <div class="legend-item">
+                <span class="legend-dot edge-mst-dot"></span>
+                <span>MST / Shortest Path</span>
+              </div>
+              <div class="legend-item">
+                <span class="legend-dot edge-rejected-dot"></span>
+                <span>Rejected Edge</span>
+              </div>
+            </div>
+
+            <!-- Step Explanation Banner -->
+            <div class="viz-step-explanation" id="graphStepExplanation" role="status" aria-live="polite">
+              Click canvas to add nodes. Select "Add Edge" to link nodes. Choose an algorithm and click Start.
+            </div>
+
+            <!-- Algorithm Error / Notification Banner -->
+            <div class="graph-error-banner hidden" id="graphErrorBanner" role="alert"></div>
+
+            <!-- Graph Algorithm Controls Toolbar -->
+            <div class="graph-controls-toolbar">
+              <div class="graph-source-select-group">
+                <label for="graphSourceSelect" class="ctrl-label">Source:</label>
+                <select id="graphSourceSelect" class="form-select-sm" title="Select starting node">
+                  <option value="">None</option>
+                </select>
+
+                <label for="graphDestSelect" class="ctrl-label" id="graphDestLabel">Dest (Optional):</label>
+                <select id="graphDestSelect" class="form-select-sm" title="Select target destination node">
+                  <option value="">None</option>
+                </select>
+              </div>
+
+              <div class="playback-btn-group">
+                <button class="btn btn-secondary btn-icon-only" id="graphPrevBtn" title="Previous Step (Shift + Left)" aria-label="Previous Step" disabled>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polygon points="19 20 9 12 19 4 19 20"></polygon>
+                    <line x1="5" y1="19" x2="5" y2="5"></line>
+                  </svg>
+                </button>
+                <button class="btn btn-primary btn-icon-only" id="graphStartBtn" title="Start Visualization" aria-label="Start Visualization">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" id="graphStartIcon">
+                    <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                  </svg>
+                </button>
+                <button class="btn btn-secondary btn-icon-only hidden" id="graphPauseBtn" title="Pause Visualization" aria-label="Pause Visualization">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="6" y="4" width="4" height="16"></rect>
+                    <rect x="14" y="4" width="4" height="16"></rect>
+                  </svg>
+                </button>
+                <button class="btn btn-primary btn-icon-only hidden" id="graphResumeBtn" title="Resume Playback" aria-label="Resume Playback">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                  </svg>
+                </button>
+                <button class="btn btn-secondary btn-icon-only" id="graphNextBtn" title="Next Step (Shift + Right)" aria-label="Next Step" disabled>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polygon points="5 4 15 12 5 20 5 4"></polygon>
+                    <line x1="19" y1="5" x2="19" y2="19"></line>
+                  </svg>
+                </button>
+                <button class="btn btn-secondary btn-icon-only" id="graphResetBtn" title="Reset Algorithm State" aria-label="Reset Algorithm State">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="1 4 1 10 7 10"></polyline>
+                    <path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"></path>
+                  </svg>
+                </button>
+              </div>
+
+              <!-- Speed Slider -->
+              <div class="speed-slider-group">
+                <span class="slider-label">Speed:</span>
+                <input type="range" id="graphSpeedSlider" min="1" max="10" value="5" class="speed-slider" aria-label="Playback Speed" />
+                <span class="speed-indicator" id="graphSpeedVal">1.0x</span>
+              </div>
+            </div>
+
+            <!-- Algorithm State & Tracking Panels -->
+            <div class="graph-tracking-grid">
+              <div class="tracking-item">
+                <span class="tracking-title">Visited Nodes</span>
+                <span class="tracking-value" id="graphTrackVisited">-</span>
+              </div>
+              <div class="tracking-item">
+                <span class="tracking-title">Traversal Order</span>
+                <span class="tracking-value highlight-cyan" id="graphTrackOrder">-</span>
+              </div>
+              <div class="tracking-item">
+                <span class="tracking-title" id="graphTrackDSLabel">Queue / Stack</span>
+                <span class="tracking-value highlight-purple" id="graphTrackDS">-</span>
+              </div>
+              <div class="tracking-item">
+                <span class="tracking-title">Current Edge</span>
+                <span class="tracking-value highlight-amber" id="graphTrackEdge">-</span>
+              </div>
+              <div class="tracking-item tracking-col-span">
+                <span class="tracking-title">Distance Array [d]</span>
+                <span class="tracking-value code-font" id="graphTrackDist">-</span>
+              </div>
+              <div class="tracking-item tracking-col-span">
+                <span class="tracking-title">Parent Array [p]</span>
+                <span class="tracking-value code-font" id="graphTrackParent">-</span>
+              </div>
+              <div class="tracking-item tracking-col-full">
+                <span class="tracking-title">Algorithm Result / Shortest Path / MST</span>
+                <span class="tracking-value highlight-green" id="graphTrackResult">Awaiting run...</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- C++ Code Implementation Panel -->
+          <div class="cpp-code-card">
+            <div class="cpp-card-header">
+              <div class="cpp-card-title">
+                <span class="cpp-tag">C++</span>
+                <span id="graphCppAlgoTitle">Breadth-First Search Implementation</span>
+              </div>
+              <div class="cpp-step-indicator" id="graphCppLineIndicator">Line -</div>
+            </div>
+            <pre class="cpp-code-viewport"><code id="graphCppCode" class="cpp-code-content"></code></pre>
+          </div>
+        </section>
+
+        <!-- 5. DATA STRUCTURES VIEW (Clean Empty State) -->
+        <section id="data-structures" class="content-view" aria-labelledby="ds-title">
+          <div class="section-top-header">
+            <div class="section-tag-group">
+              <span class="section-tag emerald">Module 04</span>
+              <span class="section-version-tag">Coming in Phase 2</span>
+            </div>
+            <h1 id="ds-title" class="view-title">Data Structures</h1>
+            <p class="view-subtitle">Dynamic pointer animations, memory tree balancing, and node operations</p>
+          </div>
+
+          <div class="empty-state-card">
+            <div class="empty-state-illustration emerald">
+              <div class="empty-icon-circle">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path
+                    d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z">
+                  </path>
+                  <polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline>
+                  <line x1="12" y1="22.08" x2="12" y2="12"></line>
+                </svg>
+              </div>
+              <div class="pulse-ring"></div>
+            </div>
+
+            <div class="empty-state-badge">Foundation Ready</div>
+            <h2 class="empty-state-heading">Data Structure Visualizer Under Construction</h2>
+            <p class="empty-state-text">
+              Watch nodes allocate, link, rotate, and delete in real-time. Test custom inputs for balanced binary search
+              trees, inspect hash table collision chaining, and trace stack and queue pointers.
+            </p>
+
+            <div class="empty-state-feature-box">
+              <div class="feature-box-title">Structures Planned for this Module:</div>
+              <div class="feature-pill-list">
+                <span class="feature-pill">Singly & Doubly Linked List</span>
+                <span class="feature-pill">Stack & Monotonic Queue</span>
+                <span class="feature-pill">Binary Search Tree (BST)</span>
+                <span class="feature-pill">AVL Self-Balancing Tree</span>
+                <span class="feature-pill">Binary Heap (Min/Max)</span>
+                <span class="feature-pill">Hash Table with Chaining</span>
+                <span class="feature-pill">Trie (Prefix Tree)</span>
+                <span class="feature-pill">Disjoint Set Union (DSU)</span>
+              </div>
+            </div>
+
+            <div class="empty-state-actions">
+              <button class="btn btn-secondary nav-trigger" data-navigate="dashboard">
+                <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <line x1="19" y1="12" x2="5" y2="12"></line>
+                  <polyline points="12 19 5 12 12 5"></polyline>
+                </svg>
+                <span>Return to Dashboard</span>
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <!-- 6. COMPLEXITY ANALYSIS VIEW (Clean Empty State) -->
+        <section id="complexity" class="content-view" aria-labelledby="complexity-title">
+          <div class="section-top-header">
+            <div class="section-tag-group">
+              <span class="section-tag amber">Module 05</span>
+              <span class="section-version-tag">Coming in Phase 2</span>
+            </div>
+            <h1 id="complexity-title" class="view-title">Complexity Analysis</h1>
+            <p class="view-subtitle">Asymptotic notation charts, Big-O reference matrix, and growth plots</p>
+          </div>
+
+          <div class="empty-state-card">
+            <div class="empty-state-illustration amber">
+              <div class="empty-icon-circle">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+                </svg>
+              </div>
+              <div class="pulse-ring"></div>
+            </div>
+
+            <div class="empty-state-badge">Foundation Ready</div>
+            <h2 class="empty-state-heading">Big-O Analytical Engine Under Construction</h2>
+            <p class="empty-state-text">
+              An interactive mathematical playground for exploring asymptotic growth curves. Compare algorithmic scaling
+              rates with live curve rendering, input size calculators, and trade-off comparisons.
+            </p>
+
+            <div class="empty-state-feature-box">
+              <div class="feature-box-title">Features Planned for this Module:</div>
+              <div class="feature-pill-list">
+                <span class="feature-pill">Interactive Growth Curve Plotter</span>
+                <span class="feature-pill">Time vs Space Trade-off Matrix</span>
+                <span class="feature-pill">Worst / Average / Best Case Inspector</span>
+                <span class="feature-pill">Master Theorem Formula Solver</span>
+                <span class="feature-pill">Printable Big-O Cheat Sheet</span>
+              </div>
+            </div>
+
+            <div class="empty-state-actions">
+              <button class="btn btn-secondary nav-trigger" data-navigate="dashboard">
+                <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <line x1="19" y1="12" x2="5" y2="12"></line>
+                  <polyline points="12 19 5 12 12 5"></polyline>
+                </svg>
+                <span>Return to Dashboard</span>
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <!-- 7. SETTINGS VIEW (Clean Empty State) -->
+        <section id="settings" class="content-view" aria-labelledby="settings-title">
+          <div class="section-top-header">
+            <div class="section-tag-group">
+              <span class="section-tag purple">Preferences</span>
+              <span class="section-version-tag">System Config</span>
+            </div>
+            <h1 id="settings-title" class="view-title">Settings & Preferences</h1>
+            <p class="view-subtitle">Personalize your learning environment, animation parameters, and themes</p>
+          </div>
+
+          <div class="settings-grid">
+            <div class="settings-card">
+              <h3 class="settings-group-title">Appearance</h3>
+              <p class="settings-group-desc">Control visual styling and interface theme</p>
+
+              <div class="setting-item">
+                <div class="setting-info">
+                  <span class="setting-name">Theme Mode</span>
+                  <span class="setting-desc">Toggle between developer dark and clean light mode</span>
+                </div>
+                <div class="setting-control">
+                  <button id="settingsThemeToggle" class="btn btn-secondary btn-sm">
+                    Switch Theme
+                  </button>
+                </div>
+              </div>
+
+              <div class="setting-item">
+                <div class="setting-info">
+                  <span class="setting-name">Compact Sidebar</span>
+                  <span class="setting-desc">Keep sidebar minimized by default on desktop</span>
+                </div>
+                <div class="setting-control">
+                  <button id="settingsCompactToggle" class="btn btn-ghost btn-sm">
+                    Toggle Sidebar
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div class="settings-card">
+              <h3 class="settings-group-title">Visualizer Defaults (Phase 2 Preview)</h3>
+              <p class="settings-group-desc">Upcoming configuration options for algorithm execution</p>
+
+              <div class="setting-item disabled">
+                <div class="setting-info">
+                  <span class="setting-name">Default Animation Speed</span>
+                  <span class="setting-desc">Configurable step delays (50ms – 1000ms)</span>
+                </div>
+                <span class="status-badge-chip ready">Coming Soon</span>
+              </div>
+
+              <div class="setting-item disabled">
+                <div class="setting-info">
+                  <span class="setting-name">Sound Effects & Pitches</span>
+                  <span class="setting-desc">Frequency-mapped audio tones during array element swaps</span>
+                </div>
+                <span class="status-badge-chip ready">Coming Soon</span>
+              </div>
+
+              <div class="setting-item disabled">
+                <div class="setting-info">
+                  <span class="setting-name">Code Syntax Theme</span>
+                  <span class="setting-desc">Sync pseudocode highlighter with One Dark or Tokyo Night</span>
+                </div>
+                <span class="status-badge-chip ready">Coming Soon</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+      </div> <!-- /content-container -->
+    </main>
+
+  </div> <!-- /app-layout -->
+
+  <!-- JavaScript Modules -->
+  <script type="module" src="js/app.js"></script>
+</body>
+
+</html>
