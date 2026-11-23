@@ -9,6 +9,7 @@ import { SortingVisualizer } from './sorting/sortingVisualizer.js';
 import { SearchingVisualizer } from './searching/searchingVisualizer.js';
 import { GraphVisualizer } from './graphs/graphVisualizer.js';
 import { DataStructuresPlayground } from './datastructures/dataStructuresPlayground.js';
+import { ComplexityAnalysis } from './complexity/complexityAnalysis.js';
 
 class AlgoVisionApp {
   constructor() {
@@ -18,6 +19,7 @@ class AlgoVisionApp {
     this.searchingVisualizer = null;
     this.graphVisualizer = null;
     this.dataStructures = null;
+    this.complexity = null;
   }
 
   /**
@@ -41,6 +43,11 @@ class AlgoVisionApp {
 
     // 6. Initialize Data Structures Playground (Stack & Queue)
     this.dataStructures = new DataStructuresPlayground();
+
+    // 6b. Initialize Complexity Analysis (Big-O guide, chart, reference table)
+    this.complexity = new ComplexityAnalysis({
+      navigate: (viewId) => this.navigation.navigateTo(viewId)
+    });
 
     // 7. Set up Quick Search and Keyboard Shortcuts
     this.setupGlobalSearch();

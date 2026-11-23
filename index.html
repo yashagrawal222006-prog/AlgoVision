@@ -1426,23 +1426,23 @@
           <!-- Algorithm Selection Navigation -->
           <div class="algo-nav-card" role="navigation" aria-label="Graph Algorithm Selection">
             <div class="algo-tabs" role="tablist" id="graphAlgoTabs">
-              <button class="algo-tab-btn active" role="tab" aria-selected="true" data-algo="bfs" id="graphTab-bfs">
+              <button class="algo-tab-btn graph-algo-tab-btn active" role="tab" aria-selected="true" data-algo="bfs" id="graphTab-bfs">
                 <span class="tab-indicator"></span>
                 <span class="tab-label">Breadth-First Search</span>
               </button>
-              <button class="algo-tab-btn" role="tab" aria-selected="false" data-algo="dfs" id="graphTab-dfs">
+              <button class="algo-tab-btn graph-algo-tab-btn" role="tab" aria-selected="false" data-algo="dfs" id="graphTab-dfs">
                 <span class="tab-indicator"></span>
                 <span class="tab-label">Depth-First Search</span>
               </button>
-              <button class="algo-tab-btn" role="tab" aria-selected="false" data-algo="dijkstra" id="graphTab-dijkstra">
+              <button class="algo-tab-btn graph-algo-tab-btn" role="tab" aria-selected="false" data-algo="dijkstra" id="graphTab-dijkstra">
                 <span class="tab-indicator"></span>
                 <span class="tab-label">Dijkstra's Algorithm</span>
               </button>
-              <button class="algo-tab-btn" role="tab" aria-selected="false" data-algo="bellman" id="graphTab-bellman">
+              <button class="algo-tab-btn graph-algo-tab-btn" role="tab" aria-selected="false" data-algo="bellman" id="graphTab-bellman">
                 <span class="tab-indicator"></span>
                 <span class="tab-label">Bellman-Ford</span>
               </button>
-              <button class="algo-tab-btn" role="tab" aria-selected="false" data-algo="kruskal" id="graphTab-kruskal">
+              <button class="algo-tab-btn graph-algo-tab-btn" role="tab" aria-selected="false" data-algo="kruskal" id="graphTab-kruskal">
                 <span class="tab-indicator"></span>
                 <span class="tab-label">Kruskal's MST</span>
               </button>
@@ -1464,7 +1464,7 @@
           <div class="algo-info-card" id="graphAlgoInfoCard">
             <div class="algo-info-header">
               <div>
-                <h2 class="algo-info-name" id="graphAlgoName">Breadth-First Search</h2>
+                <h2 class="algo-info-name" id="graphAlgoTitle">Breadth-First Search</h2>
                 <p class="algo-info-desc" id="graphAlgoDesc">
                   Level-order graph traversal exploring all neighboring vertices at current depth before advancing deeper. Uses a FIFO queue.
                 </p>
@@ -1472,11 +1472,11 @@
               <div class="complexity-group">
                 <div class="complexity-badge">
                   <span class="badge-label">Time Complexity</span>
-                  <span class="badge-val" id="graphTimeComplexity">O(V + E)</span>
+                  <span class="badge-val" id="graphTimeComp">O(V + E)</span>
                 </div>
                 <div class="complexity-badge">
                   <span class="badge-label">Space Complexity</span>
-                  <span class="badge-val" id="graphSpaceComplexity">O(V)</span>
+                  <span class="badge-val" id="graphSpaceComp">O(V)</span>
                 </div>
               </div>
             </div>
@@ -1926,54 +1926,111 @@
           </div>
         </section>
 
-        <!-- 6. COMPLEXITY ANALYSIS VIEW (Clean Empty State) -->
+        <!-- 6. COMPLEXITY ANALYSIS VIEW -->
         <section id="complexity" class="content-view" aria-labelledby="complexity-title">
           <div class="section-top-header">
             <div class="section-tag-group">
               <span class="section-tag amber">Module 05</span>
-              <span class="section-version-tag">Coming in Phase 2</span>
+              <span class="section-version-tag">Reference</span>
             </div>
             <h1 id="complexity-title" class="view-title">Complexity Analysis</h1>
-            <p class="view-subtitle">Asymptotic notation charts, Big-O reference matrix, and growth plots</p>
+            <p class="view-subtitle">Time and space complexity for every algorithm in AlgoVision, plus a simple Big-O guide</p>
           </div>
 
-          <div class="empty-state-card">
-            <div class="empty-state-illustration amber">
-              <div class="empty-icon-circle">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
-                </svg>
+          <!-- Big-O explainer -->
+          <div class="dashboard-section-card cx-card">
+            <div class="section-card-header">
+              <div>
+                <h2 class="section-card-title">What is Big O?</h2>
+                <p class="section-card-subtitle">A beginner-friendly way to compare algorithms</p>
               </div>
-              <div class="pulse-ring"></div>
             </div>
-
-            <div class="empty-state-badge">Foundation Ready</div>
-            <h2 class="empty-state-heading">Big-O Analytical Engine Under Construction</h2>
-            <p class="empty-state-text">
-              An interactive mathematical playground for exploring asymptotic growth curves. Compare algorithmic scaling
-              rates with live curve rendering, input size calculators, and trade-off comparisons.
+            <p class="cx-lead">
+              Big O notation describes how the work an algorithm does <strong>grows as the input gets bigger</strong>.
+              It ignores exact seconds and focuses on the trend, where <code class="code-badge">N</code> is the number of items.
             </p>
-
-            <div class="empty-state-feature-box">
-              <div class="feature-box-title">Features Planned for this Module:</div>
-              <div class="feature-pill-list">
-                <span class="feature-pill">Interactive Growth Curve Plotter</span>
-                <span class="feature-pill">Time vs Space Trade-off Matrix</span>
-                <span class="feature-pill">Worst / Average / Best Case Inspector</span>
-                <span class="feature-pill">Master Theorem Formula Solver</span>
-                <span class="feature-pill">Printable Big-O Cheat Sheet</span>
+            <div class="cx-explain-grid">
+              <div class="cx-explain-item">
+                <span class="cx-explain-title">Time complexity</span>
+                <span class="cx-explain-text">How many steps the algorithm takes as N grows.</span>
+              </div>
+              <div class="cx-explain-item">
+                <span class="cx-explain-title">Space complexity</span>
+                <span class="cx-explain-text">How much extra memory it needs as N grows.</span>
+              </div>
+              <div class="cx-explain-item">
+                <span class="cx-explain-title cx-best">Best case</span>
+                <span class="cx-explain-text">The luckiest input, such as an already sorted list.</span>
+              </div>
+              <div class="cx-explain-item">
+                <span class="cx-explain-title cx-avg">Average case</span>
+                <span class="cx-explain-text">A typical, random input.</span>
+              </div>
+              <div class="cx-explain-item">
+                <span class="cx-explain-title cx-worst">Worst case</span>
+                <span class="cx-explain-text">The unluckiest input. This is the guarantee Big O usually quotes.</span>
               </div>
             </div>
+            <div class="cx-class-list" id="cxClassList"></div>
+          </div>
 
-            <div class="empty-state-actions">
-              <button class="btn btn-secondary nav-trigger" data-navigate="dashboard">
-                <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <line x1="19" y1="12" x2="5" y2="12"></line>
-                  <polyline points="12 19 5 12 12 5"></polyline>
-                </svg>
-                <span>Return to Dashboard</span>
-              </button>
+          <!-- Growth chart -->
+          <div class="dashboard-section-card cx-card">
+            <div class="section-card-header">
+              <div>
+                <h2 class="section-card-title">Growth Rate Comparison</h2>
+                <p class="section-card-subtitle">Steps needed (vertical) as the input size N grows (horizontal). Click a legend item to show or hide it.</p>
+              </div>
             </div>
+            <div class="cx-legend" id="cxLegend" role="group" aria-label="Toggle growth curves"></div>
+            <div class="cx-chart-wrap">
+              <svg id="cxChart" class="cx-chart" viewBox="0 0 720 340" role="img"
+                aria-label="Line chart comparing O(1), O(log N), O(N), O(N log N) and O(N squared) growth"></svg>
+            </div>
+            <div class="cx-slider-row">
+              <label class="control-label" for="cxSizeSlider">Input size N:</label>
+              <input type="range" id="cxSizeSlider" class="form-range" min="1" max="20" value="10">
+              <span id="cxSizeLabel" class="slider-badge">10</span>
+            </div>
+            <div class="cx-readout" id="cxReadout" aria-live="polite"></div>
+          </div>
+
+          <!-- Algorithm table -->
+          <div class="dashboard-section-card cx-card">
+            <div class="section-card-header">
+              <div>
+                <h2 class="section-card-title">Algorithm Complexity Reference</h2>
+                <p class="section-card-subtitle">Pulled from the same data the visualizers use</p>
+              </div>
+              <span class="pill-indicator" id="cxCountPill">0 algorithms</span>
+            </div>
+            <div class="cx-filter-tabs algo-tabs-list" role="tablist" aria-label="Filter by category" id="cxTabs">
+              <button class="algo-tab-btn active" role="tab" aria-selected="true" data-cx-filter="all"><span class="tab-indicator"></span><span>All</span></button>
+              <button class="algo-tab-btn" role="tab" aria-selected="false" data-cx-filter="sorting"><span class="tab-indicator"></span><span>Sorting</span></button>
+              <button class="algo-tab-btn" role="tab" aria-selected="false" data-cx-filter="searching"><span class="tab-indicator"></span><span>Searching</span></button>
+              <button class="algo-tab-btn" role="tab" aria-selected="false" data-cx-filter="graphs"><span class="tab-indicator"></span><span>Graphs</span></button>
+              <button class="algo-tab-btn" role="tab" aria-selected="false" data-cx-filter="data-structures"><span class="tab-indicator"></span><span>Data Structures</span></button>
+            </div>
+            <div class="recent-table-wrapper">
+              <table class="recent-table cx-table">
+                <thead>
+                  <tr>
+                    <th>Algorithm</th>
+                    <th>Category</th>
+                    <th>Best</th>
+                    <th>Average</th>
+                    <th>Worst</th>
+                    <th>Space</th>
+                    <th>Open</th>
+                  </tr>
+                </thead>
+                <tbody id="cxTableBody"></tbody>
+              </table>
+            </div>
+            <p class="cx-footnote">
+              V = vertices, E = edges. Graph algorithms and stack/queue operations have a single cost that does not depend on the
+              input order, so it is shown once under "All cases".
+            </p>
           </div>
         </section>
 
